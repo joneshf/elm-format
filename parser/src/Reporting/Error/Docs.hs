@@ -11,6 +11,7 @@ data Error
     | OnlyInExports [String]
     | NoComment String
     | NoType String
+    deriving (Eq, Show)
 
 
 -- TO REPORT

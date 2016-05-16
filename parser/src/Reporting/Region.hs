@@ -1,6 +1,10 @@
+{-# LANGUAGE DeriveAnyClass #-}
+{-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE OverloadedStrings #-}
 module Reporting.Region where
 
+import GHC.Generics
+import qualified Data.Aeson as Json
 import qualified Text.Parsec.Pos as Parsec
 
 
@@ -8,14 +12,14 @@ data Region = Region
     { start :: Position
     , end :: Position
     }
-    deriving (Eq, Show)
+    deriving (Eq, Show, Generic, Json.ToJSON)
 
 
 data Position = Position
     { line :: Int
     , column :: Int
     }
-    deriving (Eq, Show)
+    deriving (Eq, Show, Generic, Json.ToJSON)
 
 
 fromSourcePos :: Parsec.SourcePos -> Position
